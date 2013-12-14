@@ -1,7 +1,5 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_admin!
-
   # GET /tickets
   # GET /tickets.json
   def index
@@ -63,6 +61,10 @@ class TicketsController < ApplicationController
   end
 
   def approve
+    
+  end
+
+  def resolve
     
   end
 
