@@ -61,6 +61,11 @@ class AdminsController < ApplicationController
     end
   end
 
+  def check_account
+         flash[:error] = "Your account is expired. Please contact Navanti for renewal."
+         redirect_to destroy_admin_session_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin

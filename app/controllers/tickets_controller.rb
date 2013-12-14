@@ -62,6 +62,10 @@ class TicketsController < ApplicationController
     end
   end
 
+  def approve
+    
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ticket
@@ -70,6 +74,6 @@ class TicketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
-      params.require(:ticket).permit(:description, :subject, :category, :user_id)
+      params.require(:ticket).permit(:description, :subject, :category, :user_id, :picture)
     end
 end
