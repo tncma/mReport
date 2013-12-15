@@ -1,28 +1,18 @@
 == mReport 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+mReport is an effort towards bridging the gap between citizens and the municipal corporation. Users can download an Android application and report issues from the application. The application consists of the following features:
 
-Things you may want to cover:
+1. Upload image and description of the complaint.
+2. Provide mobile number of the user and location of the complaint.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+mReport also includes a web application for users and admins to track the issues in real time. Administrators are allowed to take action on the issues - to report it to the concerned authority via SMS or email. Once the action has been taken, the issue is marked as resolved by the administrator.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+The application is hosted on Heroku and can be found here: http://lit-sierra-5396.herokuapp.com/
+
+== Participants
+
+1. Bharath MG
+2. Girish Koundinya
+3. Gautam Krishnan
+
