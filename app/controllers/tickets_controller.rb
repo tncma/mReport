@@ -103,7 +103,7 @@ class TicketsController < ApplicationController
 
   def report_issue
     mode = params['ticket']['mode']
-    @url = "http://lit-sierra-5396.herokuapp.com/tickets" + @ticket.id.to_s
+    @url = "http://lit-sierra-5396.herokuapp.com/tickets/" + @ticket.id.to_s
     if mode == "0"
       number_to_send_to = params['ticket']['contact_no']
       twilio_sid = "AC31a5d701b2a90db3f5ddf6456afa570f"
