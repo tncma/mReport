@@ -1,0 +1,110 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #fff;
+}
+table { 
+	table-layout:fixed; 
+	border: 1px solid #F2F2F2;
+}
+table tr { 
+	height:1em;
+}
+td { 
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;  
+	padding-top: 20px !important;
+	padding-bottom: 20px !important;
+}
+.logo-main{
+	background: url('../images/govt_logo1.jpg');
+	width: 130px;
+	height: 136px;
+	margin: 0 auto;
+	margin-top: 50px;
+}
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* Dashboard */
+
+.dashboard-wrapper{
+	margin-top: 50px;
+	padding: 0 20px;
+}
+.dashboard-wrapper h4{
+	margin-bottom: 20px;
+}
+.blank-template{
+	text-align: center;
+	font-size: 18px;
+	margin-top: 80px;
+}
+.show-container{
+	margin-top: 50px;
+	padding: 0 20px;
+}
+.show-photo{
+	height: auto;
+	float: left;
+}
+.show-photo img{
+	width: 100%;
+	height: auto;	
+	border-radius: 8px;
+	border: 3px solid #EEE;
+}
+.show-right{
+	float: right;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 20px;
+}
+.show-contact, .show-date, .show-description{
+	margin-bottom: 15px;
+}
+.show-contact .glyphicon, .show-date .glyphicon, .show-description .glyphicon{
+	margin-right: 8px;
+	font-size: 20px;
+}
+.show-description{
+	font-size: 16px;
+}
+.show-buttons .btn{
+	float: left !important;
+	margin-right: 20px;
+	margin-top: 20px;
+}

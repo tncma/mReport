@@ -1,28 +1,122 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @ticket.description %>
-</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-<p>
-  <strong>Subject:</strong>
-  <%= @ticket.subject %>
-</p>
+    <title>mReport - View issue</title>
 
-<p>
-  <strong>Category:</strong>
-  <%= @ticket.category %>
-</p>
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/bootstrap.css" rel="stylesheet">
+    <link href="/assets/style.css" rel="stylesheet">
 
-<p>
-  <strong>User:</strong>
-  <%= @ticket.user_id %>
-</p>
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
-<p>
-	<%= image_tag @ticket.picture.url(:medium) %>
-</p>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
 
-<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
-<%= link_to 'Back', tickets_path %>
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header col-md-12">
+          <a class="navbar-brand" href="#">mReport</a>
+          <% if !admin_signed_in? %>
+            <%= link_to "Sign in", admin_session_path, :class => "navbar-brand pull-right" %>
+          <% else %>
+            <%= link_to "Sign out", destroy_admin_session_path, :method => :delete , :class => "navbar-brand pull-right"%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="container show-container">
+      <div class="show-photo col-md-5">
+        <%= image_tag @ticket.picture.url%>
+      </div>
+      <div class="show-right col-md-7">
+        <div class="show-contact">
+          <span class="glyphicon glyphicon-earphone"></span> 
+            <%= @user.phone %>
+        </div>
+        <div class="show-date">
+          <span class="glyphicon glyphicon-calendar"></span> 
+          <%= @ticket.created_at.strftime("%d %b, %Y %I:%M %p") %>
+        </div>
+        <div class="show-location">
+         <span class="glyphicon glyphicon-map-marker"></span> <%= @location %>
+       </div>
+        <div class="show-description">
+          <span class="glyphicon glyphicon-comment"></span> 
+          <%= @ticket.description %>
+        </div>
+        <div class="show-buttons col-md-12">
+          <% if admin_signed_in? %>
+            <a class="btn btn-primary btn-large col-md-4" id="take-action"><span class="glyphicon glyphicon-wrench"></span> &nbsp;Take Action</a>
+            <%= link_to resolve_ticket_path(@ticket), :class => "btn btn-success btn-large col-md-4", :method => :post do %>
+                   <span class="glyphicon glyphicon-ok"></span> 
+                   Mark as Resolved
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <%= form_for @ticket, :url => report_issue_ticket_path(@ticket), :html => { :multipart => true }, :method => 'post' do |f| %>
+    <div class="container action-area" id="action-area">
+      <label class="custom-select">
+        <%= select("ticket", "ward", Ward.all.collect {|w| [ w.name ] }, {include_blank: 'Select Place'}) %>
+      </label>
+      <label class="custom-select">
+        <select id="ticket_mode" name="ticket[mode]"> 
+          <option value="">Mode of Contact</option>
+          <option value="0">SMS</option>
+          <option value="1">Email</option>
+        </select>
+      </label>
+      <label class="custom-select" id="hide_options">
+        <select id="ticket_contact_no" name="ticket[contact_no]">
+          <option value="">Select Contact Name</option>
+          <option value="+918870711421">Gautam Krishnan</option>
+          <option value="+919677973324">Bharath MG</option>
+          <option value="+919677973324">Girish Koundinya</option>
+          <option value="+919677973324">Ananth Madhavan</option>
+          <option value="+919677973324">Neela Saranya</option>
+          <option value="+919677973324">Sudharsanan</option>
+        </select>
+        <select id="ticket_contact_email" name="ticket[contact_email]">
+          <option value="">Select Contact Name</option>
+          <option value="mgbharath000@gmail.com">Gautam Krishnan</option>
+          <option value="mgbharath000@gmail.com">Bharath MG</option>
+          <option value="mgbharath000@gmail.com">Girish Koundinya</option>
+          <option value="mgbharath000@gmail.com">Ananth Madhavan</option>
+          <option value="mgbharath000@gmail.com">Neela Saranya</option>
+          <option value="mgbharath000@gmail.com">Sudharsanan</option>
+        </select>
+      </label>
+      <%= f.hidden_field "user_id" , value: @ticket.user_id %>
+      <!-- <button type="button" class="btn btn-primary action-button">Report</button> -->
+      <%= f.submit "Report", :class => "btn btn-primary action-button" %>
+      <div class="checkbox action-checkbox">
+        <label>
+          <input type="checkbox"> Notify User
+        </label>
+      </div>
+    </div>
+    <% end %>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/assets/jquery-1.10.2.min.js"></script>
+    <script src="/assets/bootstrap.min.js"></script>
+    <script src="/assets/script.js"></script>
+  </body>
+</html>

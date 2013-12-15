@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  pushcart_primary: 1
+  tricycles_primary: 1
+  auto_primary: 1
+  minilorry_primary: 1
+  tractor_primary: 1
+  lorry_secondary: 1
+  compactor_secondary: 1
+  dumper_secondary: 1
+  available_acre: 9.99
+  land_for_compost: 9.99
+  balance_req: 9.99
+
+two:
+  name: MyString
+  pushcart_primary: 1
+  tricycles_primary: 1
+  auto_primary: 1
+  minilorry_primary: 1
+  tractor_primary: 1
+  lorry_secondary: 1
+  compactor_secondary: 1
+  dumper_secondary: 1
+  available_acre: 9.99
+  land_for_compost: 9.99
+  balance_req: 9.99

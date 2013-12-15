@@ -2,8 +2,17 @@ MReport::Application.routes.draw do
   devise_for :admins
   resources :users
 
-  resources :tickets
+  resources :tickets do 
+    member do
+      post 'resolve'
+      post 'report_issue'
+    end
+    collection do 
+      post 'import'
+    end
+  end
 
+  resources :reports
   resources :admins
 
   resources :staffs

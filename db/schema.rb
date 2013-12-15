@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131214095032) do
+ActiveRecord::Schema.define(version: 20131215030136) do
 
   create_table "admins", force: true do |t|
     t.string   "name"
@@ -39,6 +39,23 @@ ActiveRecord::Schema.define(version: 20131214095032) do
     t.datetime "updated_at"
   end
 
+  create_table "swm_vehicles", force: true do |t|
+    t.string   "name"
+    t.integer  "pushcart_primary"
+    t.integer  "tricycles_primary"
+    t.integer  "auto_primary"
+    t.integer  "minilorry_primary"
+    t.integer  "tractor_primary"
+    t.integer  "lorry_secondary"
+    t.integer  "compactor_secondary"
+    t.integer  "dumper_secondary"
+    t.decimal  "available_acre",      precision: 10, scale: 0
+    t.decimal  "land_for_compost",    precision: 10, scale: 0
+    t.decimal  "balance_req",         precision: 10, scale: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tickets", force: true do |t|
     t.string   "description"
     t.string   "subject"
@@ -50,10 +67,19 @@ ActiveRecord::Schema.define(version: 20131214095032) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.integer  "resolved"
+    t.string   "location"
   end
 
   create_table "users", force: true do |t|
     t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "wards", force: true do |t|
+    t.string   "name"
+    t.integer  "no_of_wards"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

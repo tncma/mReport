@@ -24,12 +24,12 @@
     <%= f.select :category, Ticket::CATEGORIES, :selected  => @ticket.category, :include_blank => true %>
   </div>
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
     <%= f.label :picture %><br>
     <%= f.file_field :picture %>
+  </div>
+ <div class="field">
+    <%= f.text_field :phone %>
+    <%= f.hidden_field :resolved , value: 0 %>
   </div>
   <div class="actions">
     <%= f.submit %>
