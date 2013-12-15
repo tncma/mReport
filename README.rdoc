@@ -2,10 +2,11 @@
 
 mReport is an effort towards bridging the gap between citizens and the municipal corporation. Users can download an Android application and report issues from the application. The application consists of the following features:
 
-1. Upload image and description of the complaint.
-2. Provide mobile number of the user and location of the complaint.
+1. One-click upload image, description and location of the complaint.
+2. Get user's mobile number to SMS status of the complaint.
 
-mReport also includes a web application for users and admins to track the issues in real time. Administrators are allowed to take action on the issues - to report it to the concerned authority via SMS or email. Once the action has been taken, the issue is marked as resolved by the administrator.
+mReport also includes a web application for users and admins to add and track the issues in real time. Administrators are allowed to take action on the issues - to report it to the concerned authority via SMS or email. Once the action has been taken, the issue is marked as resolved by the administrator.
+Once the issue has been resolved, the user is sent an SMS as an acknowledegment.
 
 
 The application is hosted on Heroku and can be found here: http://lit-sierra-5396.herokuapp.com/
@@ -16,3 +17,7 @@ The application is hosted on Heroku and can be found here: http://lit-sierra-539
 2. Girish Koundinya
 3. Gautam Krishnan
 
+== Taking it further:
+
+1. Sorting issues by area.
+2. Classify areas based on number of issues as high, medium or low priority.
