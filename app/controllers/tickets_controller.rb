@@ -12,7 +12,7 @@ class TicketsController < ApplicationController
   # GET /tickets/1.json
   def show
     @latlong = @ticket.location
-    @location = "Unspecified"
+    @location = @ticket.location
     if @latlong
       s = Geocoder.search(@latlong)
       if !s.empty?

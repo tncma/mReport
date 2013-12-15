@@ -200,3 +200,33 @@ label.custom-select {
 
 /* Notifications */
 
+/* New Ticket */
+
+
+.new-ticket-container{
+  margin-top: 50px;
+  padding: 0 20px;
+}
+.new-ticket-container .custom-select{
+  padding-left: 0;
+  margin-left: 0;
+}
+.new-issue{
+  margin-bottom: 50px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #EEE;
+}
+
+
+/* Footer */
+
+.footer{
+  width:100%;
+  position:absolute;
+  bottom:0;
+  left:0;
+  background:#eee;
+  border-top: 1px solid #CCC;
+  text-align: center;
+  padding: 10px;
+}
