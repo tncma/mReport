@@ -36,6 +36,7 @@
           <% else %>
             <%= link_to "Sign out", destroy_admin_session_path, :method => :delete , :class => "navbar-brand pull-right"%>
           <% end %>
+          <%= link_to "New issue", new_ticket_path, :class => "navbar-brand pull-right"%>
         </div>
       </div>
     </div>

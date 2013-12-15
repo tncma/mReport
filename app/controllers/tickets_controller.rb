@@ -83,6 +83,19 @@ class TicketsController < ApplicationController
     @ticket.resolved = 1
     respond_to do |format|
       if @ticket.save
+        number_to_send_to = @ticket.user.phone
+        if number_to_send_to.include? "9677973324"
+          twilio_sid = "AC31a5d701b2a90db3f5ddf6456afa570f"
+        twilio_token = "45aca855058d61d714fd70c24725051f"
+        twilio_phone_number = "(580) 686-4593"
+   
+        @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
+        @result = @twilio_client.account.sms.messages.create(
+          :from => twilio_phone_number,
+          :to => number_to_send_to,
+          :body => "Your issue has been marked as resolved by mReport Admin. Have a great day!"
+        )
+        end
         format.html { redirect_to tickets_url, notice: 'Issue was successfully marked as resolved'}
       end
     end
@@ -90,6 +103,7 @@ class TicketsController < ApplicationController
 
   def report_issue
     mode = params['ticket']['mode']
+    @url = "http://lit-sierra-5396.herokuapp.com/tickets" + @ticket.id.to_s
     if mode == "0"
       number_to_send_to = params['ticket']['contact_no']
       twilio_sid = "AC31a5d701b2a90db3f5ddf6456afa570f"
@@ -97,7 +111,6 @@ class TicketsController < ApplicationController
       twilio_phone_number = "(580) 686-4593"
  
       @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
-      @url = "http://localhost:3000/tickets/" + @ticket.id.to_s
       @result = @twilio_client.account.sms.messages.create(
         :from => twilio_phone_number,
         :to => number_to_send_to,
@@ -106,7 +119,7 @@ class TicketsController < ApplicationController
     else
       email = params['ticket']['contact_email']
       @user = User.find(params['ticket']['user_id'])
-      UserMailer.report_mailer(@user,email,@ticket).deliver
+      UserMailer.report_mailer(@user,email,@ticket,@url).deliver
     end
     respond_to do |format|
         format.html { 

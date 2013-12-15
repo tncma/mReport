@@ -1,9 +1,9 @@
 class UserMailer < ActionMailer::Base
 	default from: 'notifications_tngovt@tngovt.com'
  
-  def report_mailer(user,email,ticket)
+  def report_mailer(user,email,ticket,url)
     @user = user
-    @url  = 'http://www.mReport.com'
+    @url  = url
     @ticket = ticket
     mail(to: email, subject: 'Issue reported')
   end
